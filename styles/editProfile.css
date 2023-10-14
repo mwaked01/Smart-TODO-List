@@ -57,3 +57,18 @@ body {
     justify-content: center;
     margin-top: 10px;
 }
+
+.user-email {
+    display: flex;
+    padding: 3px;
+}
+
+.user-password {
+    display: flex;
+    padding: 3px;
+}
+
+.user-username {
+    display: flex;
+    padding: 3px;
+}
