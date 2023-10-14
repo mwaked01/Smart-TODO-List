@@ -11,6 +11,13 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+// PG database connection
+const { Pool } = require("pg");
+const dbParams = require("./lib/db.js");
+const db = new Pool(dbParams);
+db.connect();
+
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -31,6 +38,7 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
+const categoriesRoutes = require('./routes/categories');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -38,6 +46,7 @@ const usersRoutes = require('./routes/users');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+app.use('/categories', categoriesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -51,3 +60,5 @@ app.get('/', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });
+
+
