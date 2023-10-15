@@ -21,30 +21,20 @@
   <script defer src="/scripts/app.js"></script>
 </head>
 
-<body>
+<body> <nav class="nav"></nav>
   <header>
     <h2>Smart To-Do List</h2>
 <h3>To Do: Plan like a boss</h3>
-    <nav class="nav">
+
   <!-- buttons for the nav bar -->
   <h1>
-      <button><a href="/" class="nav-button">HOME</a></button>
-      <button><a href="" class="nav-button">PROFILE</a></button>
-      <button><a href="" class="nav-button">TO READ</a></button>
-      <button><a href="" class="nav-button">TO WATCH</a></button>
-      <button><a href="" class="nav-button">TO EAT</a></button>
-      <button><a href="" class="nav-button">TO BUY</a></button>
-      <button><a href="" class="nav-button">MISCELLANEOUS</a></button>
-      </h1>
-    </nav>
-
-    <form action="/submit" class="nav-form" method="POST">
-      <textarea placeholder="ENTER NEW TASK"></textarea>
-      <button type="submit">ADD TO LIST</button>
+    <form action="/submit" class="login-form" method="POST">
+      <button><a href="/login" class="login" type="submit">LOGIN</a></button>
     </form>
-
-<!-- button to make a new task subission -->
-
+       <form action="/submit" class="registration-form" method="POST">
+        <button><a href="/register" class="register" type="submit">REGISTER</a></button>
+    </form>
+  </h1>
 </body>
 
 <main></main>
