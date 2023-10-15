@@ -21,20 +21,29 @@
   <script defer src="/scripts/app.js"></script>
 </head>
 
-<body> <nav class="nav"></nav>
+<body>
+  <nav class="nav-landing">
   <header>
     <h2>Smart To-Do List</h2>
 <h3>To Do: Plan like a boss</h3>
 
-  <!-- buttons for the nav bar -->
+  <!-- buttons for the landing page nav bar -->
   <h1>
-    <form action="/submit" class="login-form" method="POST">
-      <button><a href="/login" class="login" type="submit">LOGIN</a></button>
+    <form action="/submit" method="POST">
+      <button class="login" type="submit">
+        <a href="/login"></a></button>
     </form>
-       <form action="/submit" class="registration-form" method="POST">
-        <button><a href="/register" class="register" type="submit">REGISTER</a></button>
+
+    <form action="/submit" method="POST">
+      <button class="register" type="submit">
+        <a href="/register">REGISTER</a>
+      </button>
     </form>
   </h1>
+
+  
+  </header>
+  </nav>
 </body>
 
 <main></main>
