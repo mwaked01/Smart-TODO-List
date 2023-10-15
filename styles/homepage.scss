@@ -1,0 +1,24 @@
+//navigation bar containing nav buttons
+
+.nav {
+  position: fixed;
+  display: flex;
+  align-items: auto;
+  top: 0;
+  width: 100%;
+  justify-content: center;
+  margin-left: -41.5%;
+  padding: 1.5em;
+  font-family: 'Young Serif', serif;
+  background-color: rgb(204, 231, 211);
+}
+
+//Remove line from hyperlink:
+.nav-button {
+  text-decoration: none;
+  justify-items: space-between;
+  padding: .6em;
+  font-family: 'Young Serif', serif;
+}
+
+
