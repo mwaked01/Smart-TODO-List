@@ -58,3 +58,8 @@ body {
     border-color: #682773;
     outline: none;
 }
+
+.user-username {
+    display: flex;
+    padding: 3px;
+}
