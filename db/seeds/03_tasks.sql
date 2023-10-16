@@ -1,0 +1,18 @@
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 1, 'A New Hope', '2023-10-06T11:58:15Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 1, 'Return of the Jedi', '2023-02-02T11:12:15Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 1, 'Attack of the Clones', '2023-07-20T03:19:28Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 2, 'Noma', '2023-02-19T02:06:46Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 2, 'Subway', '2023-09-27T09:19:47Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 3, 'Das Boot', '2023-02-12T08:47:29Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 3, 'South!', '2023-10-26T08:44:32Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 4, 'Groceries', '2023-06-20T23:35:14Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (1, 4, 'Fuel', '2023-06-20T23:35:14Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (2, 3, 'Microscripts', '2023-01-27T15:52:00Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (2, 3, 'Treasure Island', '2023-09-16T06:03:34Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (2, 3, 'Metamorphosis', '2023-01-16T02:49:02Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (3, 3, 'Invisible Cities', '2023-10-08T19:08:20Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (3, 3, '1Q84', '2023-08-29T07:34:27Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (3, 1, 'The Lobster', '2023-05-10T22:41:41Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (4, 1, 'Eo', '2023-09-30T20:55:28Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (4, 2, 'McDonalds', '2023-03-31T16:29:00Z');
+INSERT INTO tasks (user_id, category_id, title, date_created) values (4, 3, '1984', '2023-11-20T12:26:55Z');

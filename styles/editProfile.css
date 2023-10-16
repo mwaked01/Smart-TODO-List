@@ -1,0 +1,74 @@
+/* Center all content */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #68b0c8;
+}
+
+/* Center the profile image and margin at the top */
+.user-profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Style the profile image */
+.profile-image {
+    border: 4px solid #000000;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    display: block;
+    margin: 10px auto;
+}
+
+/* Add some margin to the top of the image */
+.mt-5 {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* Force username and email to stack */
+.profile-name, .profile-email {
+    display: flex;
+    justify-content: center;
+}
+
+/* Style the input fields */
+.user-input-field {
+    border: 2px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    transition: border-color 0.3s;
+    display: flex;
+    justify-content: center;
+}
+
+.profile-button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.user-email {
+    display: flex;
+    padding: 3px;
+}
+
+.user-password {
+    display: flex;
+    padding: 3px;
+}
+
+.user-username {
+    display: flex;
+    padding: 3px;
+}
