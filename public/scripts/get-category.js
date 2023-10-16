@@ -14,8 +14,24 @@ $(() => {
       method: 'GET',
       url: edamamApiUrl
     })
-      .done((response) => {
-        if (response.category === 'Not Found') {
+      .done((edamamResponse) => {
+
+        if (edamamResponse.category === 'Products') {
+          const postData = { word: word, category: 4 };
+          $.ajax({
+            method: 'POST',
+            url: '/api/toBuy',
+            data: postData,
+            success: function (task) {
+              console.log(`'${word}' added as a task.`);
+            },
+            error: function (error) {
+              console.error('Error adding task:', error);
+            }
+          });
+        }
+
+        if (edamamResponse.category === 'Not Found') {
           // If Edamam API didn't find a match, check the themoviedb API
           const yelpApiUrl = `/api/toEat?word=${word}`;
           $.ajax({
@@ -23,6 +39,22 @@ $(() => {
             url: yelpApiUrl
           })
             .done((yelpResponse) => {
+
+              if (yelpResponse.category === 'Restaurants') {
+                const postData = { word: word, category: 2 };
+                $.ajax({
+                  method: 'POST',
+                  url: '/api/toEat',
+                  data: postData,
+                  success: function (task) {
+                    console.log(`'${word}' added as a task.`);
+                  },
+                  error: function (error) {
+                    console.error('Error adding task:', error);
+                  }
+                });
+              }
+
               if (yelpResponse.category === 'Not Found') {
                 // If TMDB API didn't find a match, check the yelp API
                 const tmbdApiUrl = `/api/toWatch?word=${word}`;
@@ -31,6 +63,22 @@ $(() => {
                   url: tmbdApiUrl
                 })
                   .done((tmbdResponse) => {
+
+                    if (tmbdResponse.category === 'Films') {
+                      const postData = { word: word, category: 1 };
+                      $.ajax({
+                        method: 'POST',
+                        url: '/api/toWatch',
+                        data: postData,
+                        success: function (task) {
+                          console.log(`'${word}' added as a task.`);
+                        },
+                        error: function (error) {
+                          console.error('Error adding task:', error);
+                        }
+                      });
+                    }
+
                     $submitButton.show();
                     $loadingIcon.hide();
                     $category.empty();
@@ -55,7 +103,7 @@ $(() => {
           $submitButton.show();
           $loadingIcon.hide();
           $category.empty();
-          $category.text(`'${word}' added to: ${response.category}`);
+          $category.text(`'${word}' added to: ${edamamResponse.category}`);
         }
       })
       .fail(() => {

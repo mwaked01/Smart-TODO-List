@@ -4,6 +4,7 @@ require('dotenv').config();
 const express = require('express');
 const router = express.Router();
 const request = require('request');
+const addTaskQueries = require('../db/queries/add-task');
 
 router.get('/', (req, res) => {
   const word = req.query.word;
@@ -23,7 +24,7 @@ router.get('/', (req, res) => {
 
       for (let business of businessList) {
         if (business.name.toLowerCase().split(" ").join("").includes(word.toLowerCase().split(" ").join(""))) {
-          category = 'To Eat';
+          category = 'Restaurants';
         }
       }
 
@@ -35,5 +36,32 @@ router.get('/', (req, res) => {
   });
 });
 
+router.post("/", (req, res) => {
+  // const userId = req.session.userId;
+  // if (!userId) {
+  //   return res.send({ error: "error" });
+  // }
+
+  const word = req.body.word;
+  const category = req.body.category;
+  const user_id = 1;
+
+  const newTask = {
+    user_id,
+    category_id: category,
+    title: word,
+    date_created: new Date()
+  };
+
+  addTaskQueries
+    .addTask(newTask)
+    .then((task) => {
+      res.send(task);
+    })
+    .catch((e) => {
+      console.error(e);
+      res.send(e);
+    });
+});
 
 module.exports = router;
