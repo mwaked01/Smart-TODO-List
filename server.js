@@ -11,13 +11,6 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-// PG database connection
-const { Pool } = require("pg");
-const dbParams = require("./lib/db.js");
-const db = new Pool(dbParams);
-db.connect();
-
-
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
@@ -46,8 +39,8 @@ const categoriesRoutes = require('./routes/categories');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/categories', categoriesRoutes(db));
 // Note: mount other resources here, using the same pattern above
+app.use('/categories', categoriesRoutes);
 
 // Home page
 // Warning: avoid creating more routes in this file!

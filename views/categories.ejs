@@ -8,6 +8,7 @@
     />
 
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/categories.js"></script>
 
 
     <!-- App CSS -->
@@ -24,12 +25,10 @@
   </head>
   <body>
       <nav class="navbar" id="scrollingNav">
-        <div class="name-icons">
-          <p class="logo">Categorizer</p>
-        </div>
+
         <div class="user-settings">
             <i class="fas fa-user-cog user-icon"></i>
-            <p class="user-icon-label">User Settings</p>
+            <p class="user-icon-label">future user avatar with </p>
         </div>
       </nav>
 
@@ -44,15 +43,15 @@
           </tr>
         </thead>
         <tbody>
-          <% for (let id in tasks) { %>
+          <% for (let task of tasks) { %>
             <tr>
-              <td><%= id %></td>
-              <td><%= tasks[id].date_created %></td>
+              <td><%= task.title %></td>
+              <td><%= task.date_created %></td>
               <td>
-                <form method="POST" action="/tasks/<%=id%>/delete"><button class="btn btn-primary">Delete</button></form>
+                <form method="POST" action="/:<%=task.id%>/delete"><button class="btn btn-primary">Delete</button></form>
               </td>
               <td>
-                <form method="GET" action="/TASKS/<%=id%>">
+                <form method="GET" action="/:<%=task.id%>/edit">
                   <button type="submit" class="btn btn-info">Edit</button></form>
               </td>
             </tr>

@@ -7,42 +7,36 @@
 
 const express = require('express');
 const router  = express.Router();
+const db = require('../db/connection');
+const tasksByCat = require("../db/queries/tasks");
+//
 
-module.exports = (db) => {
-  const listTask = (categoryId) => {//get from database
-    return db.query(`SELECT * FROM tasks WHERE category_id = $1 ORDER BY date_created;`, [
-      categoryId,
-    ]);
-  };
+router.get("/:cat_id", (req, res) => {
+  tasksByCat.getTasksInCat(req.params.cat_id)
+    .then((tasks) => {
+      console.log('tasks:', tasks)
+      res.render('categories', { tasks });
+    })
+    .catch((err) => res.status(500).send(err));
+});
 
-  router.get("/", (req, res) => {
-    Promise.all([
-      listTask(1) //hard code for category = 1
-    ])
-      .then((data) => {
-        const tasks = data;//get data from database to pass it to render the page
-        const templateVars = {
-          tasks: tasks.rows,
-        };
-        res.render("categories", templateVars);
-      })
-      .catch((err) => res.status(500).send(err));
-  });
+///TO BE DONE - edit
+router.post('/:task_id/edit', (req, res) => {
+  const title = req.body.title;
+  const newCatId = req.body.category_id;
+});
 
-//  router.post('/edit', (req, res) =>
+router.post('/:task_id/delete', (req, res) => {
+  db.query(
+    `DELETE FROM tasks
+      WHERE id = $1;`,
+    [req.body.task_id]
+  )
+    .then((data) => {
+      res.json({ data });
+      res.redirect("/:cat_id");
+    })
+    .catch((err) => console.log(err.massage));
+});
 
-  router.post('/delete', (req, res) => {
-    db.query(
-      `DELETE FROM tasks
-        WHERE id = $1;`,
-      [req.body.task_id]
-    )
-      .then((data) => {
-        res.json({ data });
-      })
-      .catch((err) => console.log(err.massage));
-  });
-
-  return router;
-};
-//module.exports = router;
+module.exports = router;
