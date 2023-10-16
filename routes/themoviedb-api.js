@@ -7,7 +7,6 @@ const request = require('request');
 
 
 const apiKey = process.env.THEMOVIEDB_API_KEY;
-let category = null;
 
 router.get('/', (req, res) => {
   const word = req.query.word;
@@ -25,9 +24,9 @@ router.get('/', (req, res) => {
         }
       }
 
-      res.json(category);
+      res.json({word,category});
     } else {
-      res.status(500).send('Error');
+      res.status(500).json('Error');
     }
   });
 });

@@ -24,10 +24,10 @@ router.get('/', (req, res) => {
         }
       }
 
-      res.json(category);
+      res.json({word,category});
     } else {
       const errorMessage = 'Error in Edamam API request';
-      res.status(500).send(errorMessage);
+      res.status(500).json({ word, category: 'Error' });
     }
   });
 });

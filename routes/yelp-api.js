@@ -7,7 +7,7 @@ const request = require('request');
 
 router.get('/', (req, res) => {
   const word = req.query.word;
-  const apiKey = process.env.YELP_API_KEY;
+  const apiKey = 'NoB5laO4qGdp3IPyUDV5tm14qrHlsRHjgh__kylIArvF80f0G6MJksh-yuYJFxlx5ETTxN-nfL6Kak9X4_nB9tasQj-oisp2SeuuBnBPZ6d-U0OeihUnrOEWZL8rZXYx';
   const apiUrl = `https://api.yelp.com/v3/businesses/search?location=canada&term=${word}&sort_by=best_match&limit=20`;
   const options = {
     url: apiUrl,
@@ -27,10 +27,10 @@ router.get('/', (req, res) => {
         }
       }
 
-      res.json(category);
+      res.json({word,category});
     } else {
-      const errorMessage = 'Error in Yelp API request';
-      res.status(500).send(errorMessage);
+      console.error('Error in Yelp API request:', error);
+      res.status(500).json('Error');
     }
   });
 });
