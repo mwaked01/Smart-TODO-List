@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Main User Page</title>
+  <title>main</title>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
@@ -23,7 +23,8 @@
     <nav class="nav">
       <h2>Smart To-Do List</h2>
       <h1>
-        <button><a href="/logout" class="nav-button">LOGOUT</a></button>
+        <form action="/logout" method="POST">
+          <button class="/logout" type="submit">LOGOUT</a></button>
         <!-- <button><a href="/register" class="nav-button">REGISTER</a></button> -->
       </h1>
       <body>
@@ -45,16 +46,12 @@
 
           <main>
             <h1>Welcome to our website</h1>
-            <form action="/submit" method="POST">
-              <button class="login" type="submit">
-                <a href="/login"></a></button>
+            <form action="/logout" method="POST">
+              <button class="logout" type="submit">LOGOUT</button>
+                <a href="/"></a></button>
               </form>
 
-              <!-- <form action="/submit" method="POST">
-                <button class="register" type="submit">
-                  <a href="/register">REGISTER</a>
-                </button>
-              </form> -->
+
             </h1>
 
           <form action="/submit" class="nav-form" method="POST">
