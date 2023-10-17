@@ -56,19 +56,18 @@ $(() => {
               }
 
               if (yelpResponse.category === 'Not Found') {
-                // If TMDB API didn't find a match, check the yelp API
-                const tmbdApiUrl = `/api/toWatch?word=${word}`;
+                const openlibraryApiUrl = `/api/toRead?word=${word}`;
                 $.ajax({
                   method: 'GET',
-                  url: tmbdApiUrl
+                  url: openlibraryApiUrl
                 })
-                  .done((tmbdResponse) => {
+                  .done((openlibraryResponse) => {
 
-                    if (tmbdResponse.category === 'Films') {
-                      const postData = { word: word, category: 1 };
+                    if (openlibraryResponse.category === 'Books') {
+                      const postData = { word: word, category: 3 };
                       $.ajax({
                         method: 'POST',
-                        url: '/api/toWatch',
+                        url: '/api/toRead',
                         data: postData,
                         success: function (task) {
                           console.log(`'${word}' added as a task.`);
@@ -78,11 +77,64 @@ $(() => {
                         }
                       });
                     }
+                    if (openlibraryResponse.category === 'Not Found') {
 
-                    $submitButton.show();
-                    $loadingIcon.hide();
-                    $category.empty();
-                    $category.text(`'${word}' added to: ${tmbdResponse.category}`);
+                      const tmdbApiUrl = `/api/toWatch?word=${word}`;
+                      $.ajax({
+                        method: 'GET',
+                        url: tmdbApiUrl
+                      })
+                        .done((tmbdResponse) => {
+                          if (tmbdResponse.category === 'Films') {
+                            const postData = { word: word, category: 1 };
+                            $.ajax({
+                              method: 'POST',
+                              url: '/api/toWatch',
+                              data: postData,
+                              success: function (task) {
+                                console.log(`'${word}' added as a task.`);
+                              },
+                              error: function (error) {
+                                console.error('Error adding task:', error);
+                              }
+                            });
+                            $submitButton.show();
+                            $loadingIcon.hide();
+                            $category.empty();
+                            $category.text(`'${word}' added to: ${tmbdResponse.category}`);
+                          }
+
+                          if (tmbdResponse.category === 'Not Found') {
+                            const postData = { word: word, category: 5 };
+                            $.ajax({
+                              method: 'POST',
+                              url: '/uncategorized',
+                              data: postData,
+                              success: function (task) {
+                                console.log(`'${word}' added as a task.`);
+                              },
+                              error: function (error) {
+                                console.error('Error adding task:', error);
+                              }
+                            });
+                            $submitButton.show();
+                            $loadingIcon.hide();
+                            $category.empty();
+                            $category.text(`'${word}' added to: Uncategorized`);
+                          }
+
+                        })
+                        .fail(() => {
+                          $category.empty();
+                          $category.text('An error occurred.');
+                        });
+                    } else {
+                      $submitButton.show();
+                      $loadingIcon.hide();
+                      $category.empty();
+                      $category.text(`'${word}' added to: ${openlibraryResponse.category}`);
+                    }
+
                   })
                   .fail(() => {
                     $category.empty();

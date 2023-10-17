@@ -38,10 +38,12 @@ app.use(express.static('public'));
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
-// const wolframApiRoutes = require('./routes/wolfram-api');
+// API Routes;
 const themoviedpApiRoutes = require('./routes/themoviedb-api');
 const yelpApiRoutes = require('./routes/yelp-api');
 const edamamApiRoutes = require('./routes/edamam-api');
+const openlibraryApiRoutes = require('./routes/openlibrary-api');
+
 const categoriesRoutes = require('./routes/categories');
 
 // Mount all resource routes
@@ -55,6 +57,9 @@ app.use('/categories', categoriesRoutes(db));
 app.use('/api/toBuy', edamamApiRoutes);
 app.use('/api/toWatch', themoviedpApiRoutes);
 app.use('/api/toEat', yelpApiRoutes);
+app.use('/api/toRead', openlibraryApiRoutes);
+
+app.use('/uncategorized', openlibraryApiRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
