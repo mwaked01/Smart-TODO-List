@@ -1,0 +1,65 @@
+//navigation bar (landing page)
+//navigation bar containing nav buttons
+
+.nav {
+  position: fixed;
+  display: flex;
+  align-items: auto;
+  top: 10px;
+  width: 100%;
+  justify-content: center;
+  margin-left: 0;
+  padding: .5em;
+  font-family: 'Young Serif', serif;
+  background-color: rgb(204, 231, 211);
+}
+
+.nav-form {
+  position: fixed;
+  display: flex;
+  align-items: auto;
+  margin-top: 5px;
+  width: 100%;
+  justify-content: center;
+  margin-left: -44.5%;
+  padding: .5em;
+  font-family: 'Young Serif', serif;
+  background-color: rgb(204, 231, 211);
+}
+
+
+//Remove line from hyperlink:
+.nav-button {
+  text-decoration: none;
+  justify-items: space-evenly;
+  padding: .6em;
+  font-family: 'Young Serif', serif;
+}
+
+
+.nav-landing{
+  position: fixed;
+  display: flex;
+  align-items: auto;
+  top: 0;
+  width: 100%;
+  justify-content: center;
+  margin-left: -44.5%;
+  padding: .5em;
+  font-family: 'Young Serif', serif;
+  background-color: rgb(204, 231, 211);
+}
+
+.login {
+  text-decoration: none;
+  justify-items: space-evenly;
+  padding: .6em;
+  font-family: 'Young Serif', serif;
+}
+
+.register {
+  text-decoration: none;
+  justify-items: space-evenly;
+  padding: .6em;
+  font-family: 'Young Serif', serif;
+}
