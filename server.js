@@ -46,12 +46,17 @@ const openlibraryApiRoutes = require('./routes/openlibrary-api');
 
 const categoriesRoutes = require('./routes/categories');
 
+const updateProfileRoutes = require('./routes/update-profile');
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
+
+app.use('/update', updateProfileRoutes);
+
 app.use('/categories', categoriesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use('/api/toBuy', edamamApiRoutes);
