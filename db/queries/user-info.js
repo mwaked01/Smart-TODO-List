@@ -10,17 +10,17 @@ const getInfo = () => {
   return db
   .query(queryInput)
     .then(data => {
-      return data.rows;
+      return data.rows[0];
     });
 };
 
 const updateInfo = (info) => {
   const queryInput = `
-  UPDATE users SET name = $1, email = $2, password = $3
-  WHERE id = 1;
+  UPDATE users SET name = $2, email = $3, password = $4
+  WHERE id = $1;
   `;
   return db
-    .query(queryInput, [info.name, info.email, info.password])
+    .query(queryInput, [1,info.name, info.email, info.password])
     .then(data => {
       return data.rows[0];
     })

@@ -12,23 +12,31 @@
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/users.js"></script>
+  <script defer src="/scripts/update-profile.js"></script>
+  <script defer src="/scripts/get-category.js"></script>
 </head>
 
 <body>
-  <h1 Update Profile</h1>
+  <%- include('partials/_header.ejs')%>
+  <h1> Update Profile</h1>
   <form id="update-form" action="/update" method="POST">
-    <label id="current-name"><%= info[0].name %></label>
-    <input  id="new-name" type="text" name="email" placeholder="New User Name"
-      style="width: 300px; margin: 1em" />
+    <label id="current-name">
+      <%= info.name %>
+    </label>
+    <input id="new-name" type="text" name="email" placeholder="New User Name" style="width: 300px; margin: 1em" />
     <br><br>
-    <label id="current-email"><%= info[0].email %></label>
-    <input  id="new-email" type="email" name="email" placeholder="New Email" style="width: 300px; margin: 1em" />
+    <label id="current-email">
+      <%= info.email %>
+    </label>
+    <input id="new-email" type="email" name="email" placeholder="New Email" style="width: 300px; margin: 1em" />
     <br><br>
-    <label id="current-password"><%= info[0].password %></label>
-    <input  id="new-password" type="password" name="password" placeholder="New Password"
+    <label id="current-password">
+      <%= info.password %>
+    </label>
+    <input id="new-password" type="password" name="password" placeholder="New Password"
       style="width: 300px; margin: 1em" />
     <br><br>
     <button type="submit" class="btn btn-primary">Submit</button>
