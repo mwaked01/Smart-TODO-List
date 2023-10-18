@@ -1,15 +1,11 @@
 $(() => {
   const $category = $('#categoryResult');
-  $('#categoryForm').on('submit', (e) => {
+  const $form = $('#categoryForm');
+  $form.on('submit', (e) => {
     e.preventDefault();
     const word = $('#word').val();
     const edamamApiUrl = `/api/toBuy?word=${word}`;
-    const $submitButton = $("#submit-button");
-    const $loadingIcon = $("#loading-icon");
-
-    $submitButton.hide();
-    $loadingIcon.show();
-
+    $form.addClass("loading");
     $.ajax({
       method: 'GET',
       url: edamamApiUrl
@@ -17,6 +13,7 @@ $(() => {
       .done((edamamResponse) => {
 
         if (edamamResponse.category === 'Products') {
+          $form.removeClass("loading");
           const postData = { word: word, category: 4 };
           $.ajax({
             method: 'POST',
@@ -41,6 +38,7 @@ $(() => {
             .done((yelpResponse) => {
 
               if (yelpResponse.category === 'Restaurants') {
+                $form.removeClass("loading");
                 const postData = { word: word, category: 2 };
                 $.ajax({
                   method: 'POST',
@@ -64,6 +62,7 @@ $(() => {
                   .done((openlibraryResponse) => {
 
                     if (openlibraryResponse.category === 'Books') {
+                      $form.removeClass("loading");
                       const postData = { word: word, category: 3 };
                       $.ajax({
                         method: 'POST',
@@ -86,6 +85,7 @@ $(() => {
                       })
                         .done((tmbdResponse) => {
                           if (tmbdResponse.category === 'Films') {
+                            $form.removeClass("loading");
                             const postData = { word: word, category: 1 };
                             $.ajax({
                               method: 'POST',
@@ -98,13 +98,12 @@ $(() => {
                                 console.error('Error adding task:', error);
                               }
                             });
-                            $submitButton.show();
-                            $loadingIcon.hide();
                             $category.empty();
                             $category.text(`'${word}' added to: ${tmbdResponse.category}`);
                           }
 
                           if (tmbdResponse.category === 'Not Found') {
+                            $form.removeClass("loading");
                             const postData = { word: word, category: 5 };
                             $.ajax({
                               method: 'POST',
@@ -117,10 +116,8 @@ $(() => {
                                 console.error('Error adding task:', error);
                               }
                             });
-                            $submitButton.show();
-                            $loadingIcon.hide();
                             $category.empty();
-                            $category.text(`'${word}' added to: Uncategorized`);
+                            $category.text(`${word} added to Uncategorized`);
                           }
 
                         })
@@ -129,10 +126,8 @@ $(() => {
                           $category.text('An error occurred.');
                         });
                     } else {
-                      $submitButton.show();
-                      $loadingIcon.hide();
                       $category.empty();
-                      $category.text(`'${word}' added to: ${openlibraryResponse.category}`);
+                      $category.text(`${word} added to ${openlibraryResponse.category}`);
                     }
 
                   })
@@ -141,10 +136,8 @@ $(() => {
                     $category.text('An error occurred.');
                   });
               } else {
-                $submitButton.show();
-                $loadingIcon.hide();
                 $category.empty();
-                $category.text(`'${word}' added to: ${yelpResponse.category}`);
+                $category.text(`${word} added to ${yelpResponse.category}`);
               }
             })
             .fail(() => {
@@ -152,10 +145,8 @@ $(() => {
               $category.text('An error occurred.');
             });
         } else {
-          $submitButton.show();
-          $loadingIcon.hide();
           $category.empty();
-          $category.text(`'${word}' added to: ${edamamResponse.category}`);
+          $category.text(`${word} added to ${edamamResponse.category}`);
         }
       })
       .fail(() => {

@@ -3,23 +3,67 @@ header {
   color: #FFFFFF;
   display: flex;
   justify-content: space-between;
-  align-items:center;
+  align-items: center;
   width: 100%;
   height: 120px;
   padding: 0 1.5em;
   position: sticky;
+
 }
 
-#categoryForm{
+#user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+
+#categoryForm {
   display: flex;
   flex-direction: row;
+  border-color: #FFFFFF;
+  border: solid;
+  border-radius: 10px;
+  padding: 2px 2px;
+  background: #FFFFFF;
 }
 
-// #submit-button{
-//   display: none;
-// }
+#submit-button,
+#word {
+  background: #FFFFFF;
+  border: 0;
+}
 
-#loading-icon{
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+#submit-button {
+  cursor: pointer;
+}
+
+.spinner {
+  animation: spinner 1s infinite linear;
   display: none;
-  padding: 0 1.5em;
+}
+
+
+#categoryForm.loading {
+  #submit-button {
+    display: none;
+  }
+
+  .spinner {
+    display: block;
+  }
+}
+
+.category{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
 }
