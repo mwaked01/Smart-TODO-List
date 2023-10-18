@@ -1,63 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>main</title>
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+    <link rel="stylesheet" href="/styles/homepage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/app.js"></script>
+  </head>
 
-<head>
-  <title>main</title>
-  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-  <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/homepage.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
-</head>
+  <body>
+    <nav class="nav">
+      <div>
+        <button><a href="/profile" class="nav-button">PROFILE</a></button>
 
-<body>
-  <nav class="nav">
-    <h1>Smart To-Do List</h1>
-    <!-- <h2> -->
-      <!-- <button><a href="/logout" class="nav-button">LOGOUT</a></button> -->
-    <!-- </h2> -->
-    <h3>To Do: Save Time, Plan Smarter</h3>
-  </nav>
-</body>
+        <button>
+          <a href="/tasks?category_id=3" class="nav-button">TO READ</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=1" class="nav-button">TO WATCH</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=3" class="nav-button">TO EAT</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=3" class="nav-button">TO BUY</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
+        </button>
+      </div>
 
+      <form action="/logout" class="logout-btn" method="POST">
+        <button type="submit">LOGOUT</button>
+      </form>
+    </nav>
+
+    <section>
+      <form action="/submit" class="nav-form" method="POST">
+        <textarea class="textarea" placeholder="ENTER NEW TASK"></textarea>
+        <button type="submit">ADD TO LIST</button>
+      </form>
+    </section>
+
+    <section>
+      <% for (const task of tasks) { %>
+      <h1><%= task.title %></h1>
+      <%}%>
+    </section>
+  </body>
 </html>
-
-
-
-<body>
-<nav class="nav">
-
-  <h2>
-    <form action="submit" button class="categories" method="GET">
-    <button><a href="/profile" class="nav-button">PROFILE</a></button>
-
-    <button><a href="/categories/1" class="nav-button">TO READ</a></button>
-    <button><a href="/categories/2" class="nav-button">TO WATCH</a></button>
-    <button><a href="/categories/3" class="nav-button">TO EAT</a></button>
-    <button><a href="/categories/4" class="nav-button">TO BUY</a></button>
-    <button><a href="/categories/5" class="nav-button">OTHER</a></button>
-  </form>
-  </h2>
-
-<section> <form action="/submit" class="nav-form" method="POST">
-    <textarea class="textarea" placeholder="ENTER NEW TASK"></textarea>
-    <button type="submit">ADD TO LIST</button></form>
-    <form action="/logout" class="logout-btn" method="POST"><button type="submit">LOGOUT</button></form>
-
-
-
-</nav>
-</body>
-
-<main>
-<!-- button to make a new task subission -->
-
-</main>
-</body>
-</html>
-

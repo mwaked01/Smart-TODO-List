@@ -8,6 +8,11 @@ app.get('/login', (req, res) => {
   res.send("Welcome");
 });
 
+
+//redirect to main
+
 app.post('/login', (req, res) => {
-  res.redirect('/home');
+  res.redirect('/main');
 });
+
+
