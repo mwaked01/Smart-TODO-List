@@ -1,0 +1,25 @@
+header {
+  background-color: #4056A1;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  align-items:center;
+  width: 100%;
+  height: 120px;
+  padding: 0 1.5em;
+  position: sticky;
+}
+
+#categoryForm{
+  display: flex;
+  flex-direction: row;
+}
+
+// #submit-button{
+//   display: none;
+// }
+
+#loading-icon{
+  display: none;
+  padding: 0 1.5em;
+}

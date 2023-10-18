@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Edit Profile</title>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="../styles/editProfile.css" type="text/css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/update-profile.js"></script>
+  <script defer src="/scripts/get-category.js"></script>
+</head>
+
+<body>
+  <div class="update-profile-container">
+    <%- include('./partials/_header') %>
+    <div class="page-top">
+        <h1 class="custom-header">Update Profile</h1>
+    </div>
+    <div class="user-profile-container rounded bg-white mt-5">
+      <div class="row">
+        <div class="user-profile-sidebar col-md-4 border-right">
+          <div class="profile-info-container d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="profile-image rounded-circle mt-5"
+              src="https://upload.wikimedia.org/wikipedia/commons/9/99/Sample_User_Icon.png" width="90">
+            <span class="profile-name font-weight-bold">
+              <%= info.name %>
+            </span>
+            <span class="profile-email text-black-50">
+              <%= info.email %>
+            </span>
+          </div>
+          <form id="update-form">
+          <div class="user-profile-sidebar">
+            <div class="user-input-field user-username">
+              <label id="current-name" class="profile-name">
+                Current Name: <%= info.name %>
+              </label>
+              <div class="new-name">
+                <input id="new-name" type="text" name="email" placeholder="New User Name"
+                  style="width: 300px; margin: 1em" />
+              </div>
+            </div>
+            <div class="user-input-field user-email">
+              <label id="current-email" class="profile-email">
+                Current Email: <%= info.email %>
+              </label>
+              <div class="new-email">
+                <input id="new-email" type="email" name="email" placeholder="New Email"
+                  style="width: 300px; margin: 1em" />
+              </div>
+            </div>
+            <div class="user-input-field user-password">
+              <label id="current-password" class="profile-password">
+                Current Password: <%= info.password %>
+              </label>
+              <div class="new-password">
+                <input id="new-password" type="password" name="password" placeholder="New Password"
+                  style="width: 300px; margin: 1em" />
+              </div>
+            </div>
+            <div class="profile-button-container mt-5">
+              <button method=POST button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+          </div>
+</body>
+
+</html>
