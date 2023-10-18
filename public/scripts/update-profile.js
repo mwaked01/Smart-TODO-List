@@ -6,6 +6,7 @@ $(() => {
     const newPassword = $('#new-password').val();
 
     const postData = { name: newName, email: newEmail, password: newPassword };
+    console.log("works");
     $.ajax({
       method: 'POST',
       url: '/update',
