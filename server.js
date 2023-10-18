@@ -11,11 +11,7 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
-// PG database connection
-const { Pool } = require("pg");
-const dbParams = require("./lib/db.js");
-const db = new Pool(dbParams);
-db.connect();
+const userInfoQueries = require('./db/queries/user-info');
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -52,7 +48,7 @@ const categoriesRoutes = require('./routes/categories');
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
-app.use('/categories', categoriesRoutes(db));
+// app.use('/categories', categoriesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use('/api/toBuy', edamamApiRoutes);
 app.use('/api/toWatch', themoviedpApiRoutes);
@@ -65,7 +61,16 @@ app.use('/uncategorized', openlibraryApiRoutes);
 // Separate them into separate routes files (see above).
 
 app.get('/', (req, res) => {
-  res.render('index');
+  userInfoQueries.getInfo()
+  .then(info => {
+    res.render('index',{ info });
+    // console.log ({users});
+  })
+  .catch(err => {
+    res
+      .status(500)
+      .json({ error: err.message });
+  });
 });
 
 app.listen(PORT, () => {
