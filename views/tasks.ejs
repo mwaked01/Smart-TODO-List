@@ -1,27 +1,29 @@
+<!-- RENAME TO tasks -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>main</title>
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
-    <link rel="stylesheet" href="/styles/homepage.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap"
-      rel="stylesheet"
-    />
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script defer src="/scripts/app.js"></script>
-  </head>
+    <title>Home Page</title>
+    <meta charset="UTF-8" >
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
 
-  <body>
-    <nav class="nav">
-      <div>
-        <button><a href="/profile" class="nav-button">PROFILE</a></button>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/homepage.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet">
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+</head>
 
+<body>
+<nav class="nav">
+
+  <div>
+      <button><a href="/profile" class="nav-button">PROFILE</a></button>
         <button>
           <a href="/tasks?category_id=3" class="nav-button">TO READ</a>
         </button>
@@ -42,8 +44,8 @@
       <form action="/logout" class="logout-btn" method="POST">
         <button type="submit">LOGOUT</button>
       </form>
-    </nav>
 
+    </nav>
     <section>
       <form action="/submit" class="nav-form" method="POST">
         <textarea class="textarea" placeholder="ENTER NEW TASK"></textarea>
@@ -53,8 +55,9 @@
 
     <section>
       <% for (const task of tasks) { %>
-      <h1><%= task.title %></h1>
+      <h3><%= task.title %></h3>
       <%}%>
     </section>
-  </body>
+
+</body>
 </html>
