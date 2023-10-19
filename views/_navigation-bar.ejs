@@ -1,0 +1,36 @@
+<!-- NAV BAR Partial-->
+<!-- <%- include('navigation-bar') %> -->
+<!-- ^^^^Insertable ejs nav bar without the edit pages -->
+
+<nav class="nav">
+      <div class="nav-bar-buttons">
+        <button>
+          <a href="/tasks?category_id=3" class="nav-button">TO READ</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=1" class="nav-button">TO WATCH</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=2" class="nav-button">TO EAT</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=4" class="nav-button">TO BUY</a>
+        </button>
+        <button>
+          <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
+        </button>
+      </div>
+      <form action="/logout" class="logout-btn" method="POST">
+        <button type="submit">LOGOUT</button>
+      </form>
+    </nav>
+
+
+
+<main>
+    <section class="profile-edit">
+      <button>
+        <a href="/profile" class="nav-button-profile">PROFILE</a>
+      </button>
+    </section>
+</main>
