@@ -42,24 +42,34 @@
           <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
         </button>
       </div>
-      <section class="profile-edit">
-        <button>
-          <a href="/profile" class="nav-button-profile">PROFILE</a>
-        </button>
-      </section>
+
 
       <form action="/logout" class="logout-btn" method="POST">
         <button type="submit">LOGOUT</button>
       </form>
     </nav>
 
+
+
     <!-- Temporary / Placeholder form to submit a new task -->
 
     <section class="nav-form">
+
       <form action="/submit" method="POST">
         <textarea class="textarea" placeholder="ENTER NEW TASK"></textarea>
         <button type="submit">ADD TO LIST</button>
       </form>
+<main>
+    <section class="profile-edit">
+      <button>
+        <a href="/profile" class="nav-button-profile">PROFILE</a>
+      </button>
+    </section>
+</main>
+
+
+
+
     </section>
 
 
