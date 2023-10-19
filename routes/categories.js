@@ -20,23 +20,17 @@ router.get("/:cat_id", (req, res) => {
     .catch((err) => res.status(500).send(err));
 });
 
-///TO BE DONE - edit
-router.post('/:task_id/edit', (req, res) => {
-  const title = req.body.title;
-  const newCatId = req.body.category_id;
-});
 
-router.post('/:task_id/delete', (req, res) => {
-  db.query(
-    `DELETE FROM tasks
-      WHERE id = $1;`,
-    [req.body.task_id]
-  )
-    .then((data) => {
-      res.json({ data });
-      res.redirect("/:cat_id");
+router.post('/:cat_id', (req, res) => {
+  const queryParams = req.body.id_name;
+  console.log(queryParams) //
+  const queryString = `DELETE FROM tasks WHERE id = ${queryParams};`;
+  db.query(queryString) //, queryParams
+    .then((task) => {
+      console.log("deleted") //deleted ok
+      res.redirect("/users"); //go back
     })
-    .catch((err) => console.log(err.massage));
+    .catch((err) => res.status(500).send(err));
 });
 
 module.exports = router;

@@ -4,11 +4,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #68b0c8;
+    background-color: #BA68C8;
 }
-
 /* Center the profile image and margin at the top */
-.user-profile-sidebar {
+.col-md-4.border-right {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,14 +17,14 @@ body {
 }
 
 /* Style the profile image */
-.profile-image {
+.rounded-circle {
     border: 4px solid #000000;
     border-radius: 50%;
     width: 90px;
     height: 90px;
     object-fit: cover;
-    display: block;
-    margin: 10px auto;
+    display: block; 
+    margin: 10px auto; 
 }
 
 /* Add some margin to the top of the image */
@@ -37,14 +36,15 @@ body {
 }
 
 /* Force username and email to stack */
-.profile-name, .profile-email {
+.font-weight-bold, .text-black-50 {
     display: flex;
     justify-content: center;
+    border: 2px soild #000000;
 }
 
 /* Style the input fields */
-.user-input-field {
-    border: 2px solid #000000;
+.form-control {
+    border: 2px solid #BA68C8;
     border-radius: 5px;
     padding: 10px;
     transition: border-color 0.3s;
@@ -52,23 +52,9 @@ body {
     justify-content: center;
 }
 
-.profile-button-container {
+.form-control:focus {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
-}
-
-.user-email {
-    display: flex;
-    padding: 3px;
-}
-
-.user-password {
-    display: flex;
-    padding: 3px;
-}
-
-.user-username {
-    display: flex;
-    padding: 3px;
+    border-color: #682773;
+    outline: none;
 }
