@@ -15,7 +15,7 @@ router.get('/:task_id', (req, res) => {
       res.render('edit', { task });
  });
 
-router.put('/:task_id', (req, res) => {
+router.post('/:task_id', (req, res) => {
    const queryParams = req.body.task_id;
    const newCat = req.body.category; // grab "value" of radio button
    console.log (queryParams, newCat)
