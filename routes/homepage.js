@@ -9,7 +9,7 @@ app.get('/login', (req, res) => {
 });
 
 
-//redirect to main
+//redirect to main page
 
 app.post('/login', (req, res) => {
   res.redirect('/main');

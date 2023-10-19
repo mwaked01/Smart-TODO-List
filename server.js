@@ -65,7 +65,7 @@ app.get("/tasks", (req, res) => {
   }
   query.then((tasks) => {
     const templateVars = { tasks };
-    res.render("main", templateVars);
+    res.render("tasks", templateVars);
   });
 });
 

@@ -1,70 +1,92 @@
-//navigation bar containing nav buttons
-// body {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   height: 100vh;
-//   margin: 0;
-// }
-
 .nav {
   display: flex;
   position: fixed;
+  align-items: flex-start;
   flex-direction: column;
-  align-items: space-evenly;
   top: 0;
   width: 100%;
-  justify-content: center;
-  margin: 0;
+  justify-content: space-between
+  margin 0;
   padding: 1.5em;
   font-family: 'Young Serif', serif;
   background-color: rgb(204, 231, 211);
 }
 
-.logout-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  margin-right: 0;
-
-}
-
 .nav-form {
   display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  // margin-left: px;
+  flex-direction: column;
   width: 100%;
-  justify-content: center;
-  margin:auto;
-  padding: .5em;
+  height: 170px;
+  position: fixed;
+  justify-content: space-between;
+  margin-top: -440px;
+  padding: 1.5em;
   font-family: 'Young Serif', serif;
   background-color: rgb(204, 231, 211);
-}
-
-
-//Remove line from hyperlink:
-.nav-button {
-  // display: flex;
-  margin-right: 5px;
-  flex-direction: flex-end;
-  text-decoration: none;
-  justify-items: space-evenly;
-  padding: .6em;
-  font-family: 'Young Serif', serif;
-  border-radius: 20px;
-}
-
-.categories button:first-child {
-  margin-right: 311px;
 }
 
 .textarea {
   display: flex;
   align-items: center;
   align-content: center;
-  height: 120px;
-  margin-left: 200px;
-  padding: 0;
-  width: 50%;
+  height: 80px;
+  width: 100%;
+  padding: 1.8em;
+  margin-top: 8px;
+  background-color:#fffce9;
+  margin-bottom: 8px;
 }
+
+.button {
+  border: none;
+}
+
+.nav-button {
+  display: flex;
+  padding: 0.6em;
+  font-family: 'Young Serif', serif;
+  color: black;
+  text-decoration: none;
+  border-radius: 3px;
+  margin: 0;
+  justify-content: flex-end;
+  border-radius: 3px;
+  outline: .5rem solid  rgb(253, 214, 210);
+}
+
+.profile-edit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.nav-button-profile {
+  display: flex;
+  padding: 0.6em;
+  font-family: 'Young Serif', serif;
+  color: black;
+  text-decoration: none;
+  border-radius: 3px;
+  margin: 0;
+  justify-content: flex-end;
+  margin-right: 0px;
+  outline: .5rem solid rgb(253, 214, 210);
+}
+
+.tasks {
+  background-color:#fffce9;
+  padding: 20px;
+  margin-top: 120px;
+  border: 6px solid rgb(253, 214, 210);
+  border-radius: 6px;
+  position: relative;
+  font-family: 'Young Serif', serif;
+}
+
+.logout-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  margin-right: 0;
+  margin-top: 12px;
+};
