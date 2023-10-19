@@ -1,14 +1,17 @@
 header {
-  background-color: #4056A1;
+  background-color: #54A396;
+  // background-color: #FFFFCE;
+  height: 645px;
   color: #FFFFFF;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  // justify-content: space-between;
+  // align-items: center;
+  flex-direction: column;
   width: 100%;
   height: 120px;
   padding: 0 1.5em;
-  position: sticky;
-
+  top: 0;
+  position: fixed;
 }
 
 #user-info {
@@ -61,7 +64,7 @@ select:focus {
   }
 }
 
-.category{
+.category {
   display: flex;
   flex-direction: column;
   gap: 15px;

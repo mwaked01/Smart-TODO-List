@@ -4,72 +4,151 @@
 <head>
   <title>Home Page</title>
 
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="/styles/homepage.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Young+Serif&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/tasks.css" />
+
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/get-category.js"></script>
+
+
+  <!-- Awesome Font Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
-  <nav class="nav">
-    <div class="nav-bar-buttons">
-      <button>
-        <a href="/tasks?category_id=3" class="nav-button">TO READ</a>
-      </button>
-      <button>
-        <a href="/tasks?category_id=1" class="nav-button">TO WATCH</a>
-      </button>
-      <button>
-        <a href="/tasks?category_id=2" class="nav-button">TO EAT</a>
-      </button>
-      <button>
-        <a href="/tasks?category_id=4" class="nav-button">TO BUY</a>
-      </button>
-      <button>
-        <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
-      </button>
-    </div>
+  <%- include('./partials/_header') %>
+
+  <table>
+    <thead>
+      <tr>
+        <td>
+          <button>
+            <a href="/tasks?category_id=3" class="nav-button">TO READ</a>
+          </button>
+        </td>
+        <td>
+          <button>
+            <a href="/tasks?category_id=1" class="nav-button">TO WATCH</a>
+          </button>
+        </td>
+        <td>
+          <button>
+            <a href="/tasks?category_id=2" class="nav-button">TO EAT</a>
+          </button>
+        </td>
+        <td>
+          <button>
+            <a href="/tasks?category_id=4" class="nav-button">TO BUY</a>
+          </button>
+        </td>
+        <td>
+          <button>
+            <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
+          </button>
+        </td>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>
+          <div class="scrollable-content">
+            <ul>
+              <% for (const task of tasks) { %>
+                <h3>
+                  <% if (task.category_id===3 & task.user_id===1) { %>
+                    <li>
+                      <%= task.title %>
+                    </li>
+                    <%}%>
+                </h3>
+                <%}%>
+            </ul>
+          </div>
+        </td>
+        <td>
+          <div class="scrollable-content">
+            <ul>
+              <% for (const task of tasks) { %>
+                <h3>
+                  <% if (task.category_id===1 & task.user_id===1) { %>
+                    <li>
+                      <%= task.title %>
+                    </li>
+                    <%}%>
+                </h3>
+                <%}%>
+            </ul>
+          </div>
+        </td>
 
 
-    <form action="/logout" class="logout-btn" method="POST">
-      <button type="submit">LOGOUT</button>
-    </form>
-  </nav>
+          <td>
+            <div class="scrollable-content">
+              <ul>
+                <% for (const task of tasks) { %>
+                  <h3>
+                    <% if (task.category_id===2 & task.user_id===1) { %>
+                      <li>
+                        <%= task.title %>
+                      </li>
+                      <%}%>
+                  </h3>
+                  <%}%>
+              </ul>
+            </div>
+          </td>
 
 
-  <section class="nav-form">
-    <form action="submit" method="POST">
-      <textarea class="textarea" placeholder="ENTER NEW TASK"></textarea>
-      <button type="submit">ADD TO LIST</button>
-    </form>
-    <main>
-      <section class="profile-edit">
-        <button>
-          <a href="/profile" class="nav-button-profile">PROFILE</a>
-        </button>
-      </section>
-    </main>
-  </section>
+          <td>
+            <div class="scrollable-content">
+              <ul>
+                <% for (const task of tasks) { %>
+                  <h3>
+                    <% if (task.category_id===4 & task.user_id===1) { %>
+                      <li>
+                        <%= task.title %>
+                      </li>
+                      <%}%>
+                  </h3>
+                  <%}%>
+              </ul>
+            </div>
+          </td>
 
 
-  <!-- Render the list of tasks -->
-  <section class="tasks">
-    <% for (const task of tasks) { %>
-      <h3>
-        <%= task.title %>
-      </h3>
-      <%}%>
-  </section>
+          <td>
+            <div class="scrollable-content">
+              <ul>
+                <% for (const task of tasks) { %>
+                  <h3>
+                    <% if (task.category_id===5 & task.user_id===1) { %>
+                      <li>
+                        <%= task.title %>
+                      </li>
+                      <%}%>
+                  </h3>
+                  <%}%>
+              </ul>
+            </div>
+          </td>
+
+      </tr>
+    </tbody>
+  </table>
+
 </body>
 
 </html>

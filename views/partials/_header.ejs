@@ -1,15 +1,17 @@
 <header>
+  <form action="/logout" class="logout-btn" method="POST">
+    <button type="submit">LOGOUT</button>
+  </form>
   <div id="user-info">
     <i class="fa-solid fa-user fa-2xl" style="color: #511f31;"></i>
     <%= info.name %>
   </div>
   <div class="category">
-  <form id="categoryForm">
-    <input type="text" id="word" name="word" required placeholder="New Task"></input>
-    <button id="submit-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-    <!-- <div class="spinner"><i class="fa-solid fa-spinner fa-spin-pulse"></i></div> -->
-    <div class="spinner"><i class="fa-solid fa-magnifying-glass fa-beat-fade " style="color: #a35700;"></i></div>
-  </form>
-  <p id="categoryResult" style="color: greenyellow;"></p>
-</div>
+    <form id="categoryForm">
+      <input type="text" id="word" name="word" required placeholder="New Task"></input>
+      <button id="submit-button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <div class="spinner"><i class="fa-solid fa-magnifying-glass fa-beat-fade " style="color: #a35700;"></i></div>
+    </form>
+    <p id="categoryResult" style="color: greenyellow;"></p>
+  </div>
 </header>

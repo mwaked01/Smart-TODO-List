@@ -72,31 +72,31 @@ app.use('/uncategorized', openlibraryApiRoutes);
 
 app.get('/', (req, res) => {
   userInfoQueries.getInfo()
-  .then(info => {
-    res.render('index',{ info });
-    // console.log ({users});
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message });
-  });
+    .then(info => {
+      res.render('index', { info });
+      // console.log ({users});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
-//feature-homepage; PULL and DISPLAY code to main page:
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 app.get("/tasks", (req, res) => {
-  console.log(req.query);
+
   let query = getTasks();
+
   if (req.query.category_id) {
     query = getTasksByCategoryId(req.query.category_id);
   }
+
   query.then((tasks) => {
-    const templateVars = { tasks };
-    res.render("tasks", templateVars);
+    userInfoQueries.getInfo()
+    .then(info => {
+      res.render('tasks', { tasks,info });
+    })
   });
 });
 

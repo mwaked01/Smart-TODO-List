@@ -1,0 +1,49 @@
+.scrollable-content {
+  flex: 1;
+  /* Allow the content to take the remaining space */
+  overflow-y: scroll;
+  /* Add a vertical scrollbar for overflow content */
+  max-height: 200px;
+}
+
+/* Add some styles for the list items */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+}
+
+
+table {
+  // display: flex;
+  // flex-direction: row;
+  // justify-content: space-between;
+  top: 120px;
+  position: fixed;
+  width: 100vw;
+
+  button {
+    border: 0;
+  }
+}
+
+thead {
+  background-color: #FFFFCE;
+
+}
+
+// .task-lists{
+//   display: flex;
+//   flex-direction: row;
+//   justify-content:space-between;
+//   position: relative;
+//   width: 100vw;
+
+// }
+
+// .list{
+// border:solid;
+// }
