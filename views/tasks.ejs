@@ -25,9 +25,7 @@
   <body>
     <nav class="nav">
       <div class="nav-bar-buttons">
-        <button>
-          <a href="/profile" class="nav-button-profile">PROFILE</a>
-        </button>
+
         <button>
           <a href="/tasks?category_id=3" class="nav-button">TO READ</a>
         </button>
@@ -44,6 +42,11 @@
           <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
         </button>
       </div>
+      <section class="profile-edit">
+        <button>
+          <a href="/profile" class="nav-button-profile">PROFILE</a>
+        </button>
+      </section>
 
       <form action="/logout" class="logout-btn" method="POST">
         <button type="submit">LOGOUT</button>
@@ -58,6 +61,7 @@
         <button type="submit">ADD TO LIST</button>
       </form>
     </section>
+
 
     <!-- Render the list of tasks -->
     <section class="tasks">
