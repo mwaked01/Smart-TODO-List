@@ -7,15 +7,15 @@ const userInfoQueries = require('../db/queries/user-info');
 router.get('/', (req, res) => {
 
   userInfoQueries.getInfo()
-  .then(info => {
-    res.render('update-profile',{ info });
-    // console.log ({users});
-  })
-  .catch(err => {
-    res
-      .status(500)
-      .json({ error: err.message });
-  });
+    .then(info => {
+      res.render('update-profile', { info });
+      // console.log ({users});
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 
 });
 
@@ -30,9 +30,10 @@ router.post("/", (req, res) => {
   };
   userInfoQueries
     .updateInfo(newProfile)
-    .then((info) => {
-      res.redirect('/update');
-      res.send(info);
+    .then(() => {
+      res.redirect('/')
+      // res.send(info);
+      // location.reload();
       //update form
     })
     .catch((e) => {
