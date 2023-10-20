@@ -21,6 +21,7 @@ $(() => {
             data: postData,
             success: function (task) {
               console.log(`'${word}' added as a task.`);
+              location.reload(true);
             },
             error: function (error) {
               console.error('Error adding task:', error);
@@ -46,6 +47,7 @@ $(() => {
                   data: postData,
                   success: function (task) {
                     console.log(`'${word}' added as a task.`);
+                    location.reload(true);
                   },
                   error: function (error) {
                     console.error('Error adding task:', error);
@@ -70,6 +72,7 @@ $(() => {
                         data: postData,
                         success: function (task) {
                           console.log(`'${word}' added as a task.`);
+                          location.reload(true);
                         },
                         error: function (error) {
                           console.error('Error adding task:', error);
@@ -93,6 +96,7 @@ $(() => {
                               data: postData,
                               success: function (task) {
                                 console.log(`'${word}' added as a task.`);
+                                location.reload(true);
                               },
                               error: function (error) {
                                 console.error('Error adding task:', error);
@@ -111,6 +115,7 @@ $(() => {
                               data: postData,
                               success: function (task) {
                                 console.log(`'${word}' added as a task.`);
+                                location.reload(true);
                               },
                               error: function (error) {
                                 console.error('Error adding task:', error);
