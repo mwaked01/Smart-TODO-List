@@ -51,7 +51,7 @@ const updateProfileRoutes = require('./routes/update-profile');
 app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/users", usersRoutes);
-app.use("/categories", categoriesRoutes(db));
+app.use("/categories", categoriesRoutes('db'));
 // Note: mount other resources here, using the same pattern above
 
 app.use('/update', updateProfileRoutes);
