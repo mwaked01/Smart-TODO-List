@@ -21,7 +21,7 @@ router.get('/:task', (req, res) => {
     .catch((err) => res.status(500).send(err));
   });
 
-router.post('/', (req, res) => {
+router.post('/:task', (req, res) => {
    console.log(req.params.task);
    const queryParams = req.body.task;
    const newCat = req.body.category; // grab "value" of radio button

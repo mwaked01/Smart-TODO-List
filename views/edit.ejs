@@ -40,7 +40,7 @@
               <label id="current-email" class="profile-email">
                 Category --
               </label>
-              <form name = "chg-cat" >>
+              <form name = "chg-cat"  method="POST" action="/:task"  enctype="multipart/form-data">
                 <fieldset>
                   <legend>Please change category to:</legend>
                   <div>
@@ -57,7 +57,7 @@
                     <label for="contactChoice3">Products</label>
                   </div>
                   <div>
-                    <button method=POST button type="submit">Submit</button>
+                    <button type="submit">Submit</button>
                   </div>
                 </fieldset>
               </form>
