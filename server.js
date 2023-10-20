@@ -12,8 +12,8 @@ const app = express();
 
 app.set("view engine", "ejs");
 
-// PG database connection
-const userInfoQueries = require("./db/queries/user-info");
+
+const userInfoQueries = require('./db/queries/user-info');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -51,12 +51,15 @@ const editRoutes = require("./routes/edit");
 app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/users", usersRoutes);
+// app.use("/categories", categoriesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 app.use("/categories", categoriesRoutes);
 app.use("/delete", categoriesRoutes);
 app.use("/edit", editRoutes);
 
 app.use("/update", updateProfileRoutes);
+
+app.use('/update', updateProfileRoutes);
 
 // app.use('/categories', categoriesRoutes(db));
 // Note: mount other resources here, using the same pattern above
@@ -70,32 +73,34 @@ app.use("/uncategorized", openlibraryApiRoutes);
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get("/", (req, res) => {
-  userInfoQueries
-    .getInfo()
-    .then((info) => {
-      res.render("index", { info });
+
+app.get('/', (req, res) => {
+  userInfoQueries.getInfo()
+    .then(info => {
+      res.render('index', { info });
       // console.log ({users});
     })
-    .catch((err) => {
-      res.status(500).json({ error: err.message });
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
     });
 });
 
-//feature-homepage; PULL and DISPLAY code to main page:
-app.get("/", (req, res) => {
-  res.render("index");
-});
 
 app.get("/tasks", (req, res) => {
-  console.log(req.query);
+
   let query = getTasks();
+
   if (req.query.category_id) {
     query = getTasksByCategoryId(req.query.category_id);
   }
+
   query.then((tasks) => {
-    const templateVars = { tasks };
-    res.render("tasks", templateVars);
+    userInfoQueries.getInfo()
+    .then(info => {
+      res.render('tasks', { tasks,info });
+    })
   });
 });
 
