@@ -16,7 +16,7 @@ router.get('/:task', (req, res) => {
   tasksByCat.getTask(req.params.task)
     .then((task) => {
       console.log('task:', task)
-      res.render('edit', { task });
+      res.render('edit', { task } );
      })
     .catch((err) => res.status(500).send(err));
   });
