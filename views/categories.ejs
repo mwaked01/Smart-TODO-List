@@ -8,6 +8,7 @@
     />
 
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/categories.js"></script>
 
 
     <!-- App CSS -->
@@ -23,18 +24,12 @@
     <title>Smart TODO List</title>
   </head>
   <body>
-      <nav class="navbar" id="scrollingNav">
-        <div class="name-icons">
-          <p class="logo">Categorizer</p>
-        </div>
-        <div class="user-settings">
-            <i class="fas fa-user-cog user-icon"></i>
-            <p class="user-icon-label">User Settings</p>
-        </div>
-      </nav>
+    <div class="update-profile-container">
+      <%- include('./partials/_header') %>
+      <div class="page-top">
+          <h1 class="custom-header">Category List</h1>
+      </div>
 
-
-      <h3>Category</h3>
       <section class="categories-container"></section>
       <table class="table">
         <thead>
@@ -44,15 +39,19 @@
           </tr>
         </thead>
         <tbody>
-          <% for (let id in tasks) { %>
+          <% for (let task of tasks) { %>
             <tr>
-              <td><%= id %></td>
-              <td><%= tasks[id].date_created %></td>
+              <td><%= task.id %></td>
+              <td><%= task.title %></td>
+              <td><%= task.date_created %></td>
               <td>
-                <form method="POST" action="/tasks/<%=id%>/delete"><button class="btn btn-primary">Delete</button></form>
+                <form method="POST" name = "task-btn" action="/delete/:<%=task.id%>">>
+                  <button class="btn btn-primary">Done (or give up)</button>
+                  <input type="number" name="id_name" value="<%= task.id%>" hidden>
+                </form>
               </td>
               <td>
-                <form method="GET" action="/TASKS/<%=id%>">
+                <form method="GET" action="/edit/<%=task.id%>">
                   <button type="submit" class="btn btn-info">Edit</button></form>
               </td>
             </tr>

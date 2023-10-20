@@ -12,6 +12,18 @@
   background-color: rgb(204, 231, 211);
 }
 
+
+// .nav {
+//   position: fixed;
+//   display: flex;
+//   align-items: auto;
+//   top: 0;
+//   width: 100%;
+//   justify-content: center;
+//   margin-left: -41.5%;
+// }
+
+//SHOULD WE KEEP THIS??
 .nav-form {
   display: flex;
   flex-direction: column;
@@ -53,6 +65,14 @@
   border-radius: 3px;
   outline: .5rem solid  rgb(253, 214, 210);
 }
+
+//.nav-button {
+//   text-decoration: none;
+//   justify-items: space-between;
+//   padding: .6em;
+//   font-family: 'Young Serif', serif;
+// }
+
 
 .profile-edit {
   display: flex;
