@@ -14,7 +14,7 @@ const tasksByCat = require("../db/queries/tasks");
 router.get("/:cat_id", (req, res) => {
   tasksByCat.getTasksInCat(req.params.cat_id)
     .then((tasks) => {
-      console.log('tasks:', tasks)
+      console.log('tasks:', tasks);
       res.render('categories', { tasks });
     })
     .catch((err) => res.status(500).send(err));

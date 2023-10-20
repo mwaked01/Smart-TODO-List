@@ -5,6 +5,8 @@ require("dotenv").config();
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const morgan = require("morgan");
+const router = require("./users/router");
+
 const { getTasks, getTasksByCategoryId } = require("./db/queries/tasks");
 
 const PORT = process.env.PORT || 8080;
@@ -95,12 +97,10 @@ app.get("/tasks", (req, res) => {
   if (req.query.category_id) {
     query = getTasksByCategoryId(req.query.category_id);
   }
-
   query.then((tasks) => {
-    userInfoQueries.getInfo()
-    .then(info => {
+    userInfoQueries.getInfo().then(info => {
       res.render('tasks', { tasks,info });
-    })
+    });
   });
 });
 
