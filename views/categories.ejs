@@ -1,82 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/categories.js"></script>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/categories.js"></script>
 
 
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <!-- App CSS -->
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
-    <title>Smart TODO List</title>
-  </head>
-  <body>
-    <div class="update-profile-container">
-      <%- include('./partials/_header') %>
-      <div class="page-top">
-          <h1 class="custom-header">Category List</h1>
-      </div>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <title>Smart TODO List</title>
+</head>
 
-      <section class="categories-container"></section>
-      <table class="table">
-        <thead>
+<body>
+  <div class="update-profile-container">
+    <!-- <%- include('./partials/_header') %> -->
+    <div class="page-top">
+      <h1 class="custom-header">
+        <%= cat_id %>
+      </h1>
+    </div>
+
+    <section class="categories-container"></section>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Date Created</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <% for (const task of tasks) { %>
+
           <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Date Created</th>
+            <td>
+              <%= task.task %>
+            </td>
+            <td>
+              <%= task.date %>
+            </td>
+            <td>
+              <form method="POST" action="/categories/<%=task.taskid%>/delete">
+                <button type="submit" class="btn btn-primary">Done (or give up)</button>
+                <!-- <input type="number" name="id_name" value="<%= task.id%>" hidden> -->
+              </form>
+            </td>
+            <td>
+              <form method="GET" action="/edit/<%=task.taskid%>">
+                <button type="submit" class="btn btn-info">Edit</button>
+              </form>
+            </td>
           </tr>
-        </thead>
-        <tbody>
-          <% for (let task of tasks) { %>
-            <tr>
-              <td><%= task.id %></td>
-              <td><%= task.title %></td>
-              <td><%= task.date_created %></td>
-              <td>
-                <form method="POST" name = "task-btn" action="/delete/:<%=task.id%>">>
-                  <button class="btn btn-primary">Done (or give up)</button>
-                  <input type="number" name="id_name" value="<%= task.id%>" hidden>
-                </form>
-              </td>
-              <td>
-                <form method="GET" action="/edit/<%=task.id%>">
-                  <button type="submit" class="btn btn-info">Edit</button></form>
-              </td>
-            </tr>
           <% } %>
-        </tbody>
-      </table>
+      </tbody>
+    </table>
     </section>
 
-
-    </main>
     <!-- Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+      crossorigin="anonymous"></script>
+</body>
+
 </html>

@@ -6,33 +6,48 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/connection');
-const tasksByCat = require("../db/queries/tasks");
-//
+const { changeTaskName, getTaskById, updateTaskById, getCategoryIdByName } = require("../db/queries/get-tasks");
 
-router.get('/:task', (req, res) => {
-  console.log(req.params.task);
-  tasksByCat.getTask(req.params.task)
-    .then((task) => {
-      console.log('task:', task)
-      res.render('edit', { task } );
-     })
-    .catch((err) => res.status(500).send(err));
-  });
+router.get('/:task_id', (req, res) => {
 
-router.post('/:task', (req, res) => {
-   console.log(req.params.task);
-   const queryParams = req.body.task;
-   const newCat = req.body.category; // grab "value" of radio button
-   const queryString = `UPDATE tasks SET category_id = ${newCat} WHERE id = ${queryParams};`;
-   console.log (queryString)
-   db.query(queryString) //, queryParams
+  const taskId = parseInt(req.params.task_id);
+
+  getTaskById(taskId)
     .then((task) => {
-      console.log("updated") //deleted ok
-      res.redirect("/users"); //go back
+      const categoriesLeft = ["Films", "Restaurants", "Books", "Products", "Other"];
+      const index = categoriesLeft.indexOf(task.category);
+      if (index !== -1) {
+        categoriesLeft.splice(index, 1);
+      }
+      const selectedOption = task.category;
+      const templateVars = { task, task_id: taskId, selectedOption, categoriesLeft };
+      res.render("edit", templateVars);
+    });
+
+});
+
+router.post('/:task_id', (req, res) => {
+  const catName = req.body.options;
+  const newName = req.body.myInput;
+  console.log (newName);
+  const taskId = req.params.task_id;
+  getCategoryIdByName(catName)
+    .then((catId) => {
+      updateTaskById(parseInt(taskId),catId.id);
     })
-    .catch((err) => res.status(500).send(err));
+    .then((catId) => {
+      changeTaskName(parseInt(taskId),newName);
+    })
+    .then(() => {
+      res.redirect("back");
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("An error occurred");
+    });
+
 });
 
 module.exports = router;

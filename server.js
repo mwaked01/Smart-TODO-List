@@ -42,7 +42,7 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
 app.use('/categories', categoriesRoutes);
-app.use('/delete', categoriesRoutes);
+app.use('/categories/:task_id', categoriesRoutes);
 app.use('/edit', editRoutes);
 
 // Home page
