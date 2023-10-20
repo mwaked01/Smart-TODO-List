@@ -3,9 +3,11 @@
     <img src="/images/Smart_To_Do.png" width="200" height="100">
     </a>
     <script>
-      const logoRedirect = document.getElementById('logo');
-      event.preventDefault();
-      
+      const logoRedirect = document.getElementById("logo");
+      logoRedirect.addEventListener("click", function(event) {
+        event.preventDefault();
+        (window.location.href = "/tasks");
+      });
     </script>
   <div class="category">
     <form id="categoryForm">
@@ -18,6 +20,13 @@
   <div id="user-info">
     <i class="fa-solid fa-user fa-2xl" style="color: #511f31;"></i>
     <%= info.name %>
+    <script>
+      const userEdit = document.getElementById("user-info");
+      userEdit.addEventListener("click", function(event) {
+        event.preventDefault();
+        (window.location.href = "/update");
+      });
+    </script>
       <form action="/logout" class="logout-btn" method="POST">
         <button type="submit">LOGOUT</button>
       </form>
