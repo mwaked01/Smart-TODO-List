@@ -8,18 +8,25 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
+const tasksByCat = require("../db/queries/tasks");
+//
 
-router.get('/:task_id', (req, res) => {
-    const task = req.params.cat_id
+router.get('/:task', (req, res) => {
+  console.log(req.params.task);
+  tasksByCat.getTask(req.params.task)
+    .then((task) => {
       console.log('task:', task)
       res.render('edit', { task });
- });
+     })
+    .catch((err) => res.status(500).send(err));
+  });
 
-router.post('/:task_id', (req, res) => {
-   const queryParams = req.body.task_id;
+router.post('/', (req, res) => {
+   console.log(req.params.task);
+   const queryParams = req.body.task;
    const newCat = req.body.category; // grab "value" of radio button
-   console.log (queryParams, newCat)
    const queryString = `UPDATE tasks SET category_id = ${newCat} WHERE id = ${queryParams};`;
+   console.log (queryString)
    db.query(queryString) //, queryParams
     .then((task) => {
       console.log("updated") //deleted ok
