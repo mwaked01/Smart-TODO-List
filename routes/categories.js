@@ -6,31 +6,28 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/connection');
-const tasksByCat = require("../db/queries/tasks");
-//
+const { deleteTaskById, getTasksByCategoryName } = require("../db/queries/get-tasks");
 
 router.get("/:cat_id", (req, res) => {
-  tasksByCat.getTasksInCat(req.params.cat_id)
+  const catId = req.params.cat_id;
+
+  getTasksByCategoryName(catId)
     .then((tasks) => {
-      console.log('tasks:', tasks)
-      res.render('categories', { tasks });
-    })
-    .catch((err) => res.status(500).send(err));
+      const templateVars = { tasks, cat_id: catId };
+      res.render("categories", templateVars);
+    });
 });
 
 
-router.post('/:cat_id', (req, res) => {
-  const queryParams = req.body.id_name;
-  console.log(queryParams) //
-  const queryString = `DELETE FROM tasks WHERE id = ${queryParams};`;
-  db.query(queryString) //, queryParams
-    .then((task) => {
-      console.log("deleted") //deleted ok
-      res.redirect("/users"); //go back
-    })
-    .catch((err) => res.status(500).send(err));
+router.post('/:task_id/delete', (req, res) => {
+   const taskId = req.params.task_id
+    deleteTaskById(taskId)
+    .then(() => {
+      res.redirect("back"); //go back
+    });
+
 });
 
 module.exports = router;

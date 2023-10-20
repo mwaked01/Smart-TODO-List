@@ -6,26 +6,48 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const db = require('../db/connection');
+const { changeTaskName, getTaskById, updateTaskById, getCategoryIdByName } = require("../db/queries/get-tasks");
 
 router.get('/:task_id', (req, res) => {
-    const task = req.params.cat_id
-      console.log('task:', task)
-      res.render('edit', { task });
- });
+
+  const taskId = parseInt(req.params.task_id);
+
+  getTaskById(taskId)
+    .then((task) => {
+      const categoriesLeft = ["Films", "Restaurants", "Books", "Products", "Other"];
+      const index = categoriesLeft.indexOf(task.category);
+      if (index !== -1) {
+        categoriesLeft.splice(index, 1);
+      }
+      const selectedOption = task.category;
+      const templateVars = { task, task_id: taskId, selectedOption, categoriesLeft };
+      res.render("edit", templateVars);
+    });
+
+});
 
 router.post('/:task_id', (req, res) => {
-   const queryParams = req.body.task_id;
-   const newCat = req.body.category; // grab "value" of radio button
-   console.log (queryParams, newCat)
-   const queryString = `UPDATE tasks SET category_id = ${newCat} WHERE id = ${queryParams};`;
-   db.query(queryString) //, queryParams
-    .then((task) => {
-      console.log("updated") //deleted ok
-      res.redirect("/users"); //go back
+  const catName = req.body.options;
+  const newName = req.body.myInput;
+  console.log (newName);
+  const taskId = req.params.task_id;
+  getCategoryIdByName(catName)
+    .then((catId) => {
+      updateTaskById(parseInt(taskId),catId.id);
     })
-    .catch((err) => res.status(500).send(err));
+    .then((catId) => {
+      changeTaskName(parseInt(taskId),newName);
+    })
+    .then(() => {
+      res.redirect("back");
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send("An error occurred");
+    });
+
 });
 
 module.exports = router;
