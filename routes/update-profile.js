@@ -32,10 +32,7 @@ router.post("/", (req, res) => {
     .updateInfo(newProfile)
 
     .then((info) => {
-      location.reload(true);
-      //res.redirect('/update');
-      res.send(info);
-      //update form
+      res.redirect('/update');
     })
     .catch((e) => {
       console.error(e);

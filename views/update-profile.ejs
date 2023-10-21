@@ -44,7 +44,7 @@
               <%= info.email %>
             </span>
           </div>
-          <form id="update-form">
+          <form id="update-form" action="/update" method="POST">
           <div class="user-profile-sidebar">
             <div class="user-input-field user-username">
               <label id="current-name" class="profile-name">
@@ -74,7 +74,7 @@
               </div>
             </div>
             <div class="profile-button-container mt-5">
-              <button method=POST button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit">Submit</button>
             </div>
           </form>
           </div>
