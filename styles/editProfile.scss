@@ -1,14 +1,21 @@
 /* Style the profile image */
-.rounded-circle {
-    border: 5px solid #000000;
-    border-radius: 50%;
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    display: block;
-    margin: 10px auto;
-  }
+// .rounded-circle {
+//     border: 5px solid #000000;
+//     border-radius: 50%;
+//     width: 90px;
+//     height: 90px;
+//     object-fit: cover;
+//     display: block;
+//     margin: 10px auto;
+//   }
   
+i.profile-icon {
+  display: flex;
+  justify-content: center;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
   /* Add some margin to the top of the image */
   .mt-5 {
     display: flex;

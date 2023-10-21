@@ -1,9 +1,10 @@
 .scrollable-content {
   flex: 1;
   /* Allow the content to take the remaining space */
-  overflow-y: scroll;
+  overflow: auto;
   /* Add a vertical scrollbar for overflow content */
-  max-height: 200px;
+  background-color: aliceblue;
+  height: 200px;
 }
 
 /* Add some styles for the list items */
@@ -16,14 +17,12 @@ li {
   margin: 5px 0;
 }
 
-
 table {
-  // display: flex;
-  // flex-direction: row;
-  // justify-content: space-between;
   top: 120px;
   position: fixed;
   width: 100vw;
+  margin-left: 10px;
+  margin-right: 10px;
 
   button {
     border: 0;
@@ -32,18 +31,18 @@ table {
 
 thead {
   background-color: #FFFFCE;
-
+  font-weight: bold;
+  height: 100%;
 }
 
-// .task-lists{
-//   display: flex;
-//   flex-direction: row;
-//   justify-content:space-between;
-//   position: relative;
-//   width: 100vw;
+.nav-button {
+  color: black;
+}
 
-// }
+a {
+  text-decoration: none;
+}
+body {
+  background: rgb(163, 208, 219);
 
-// .list{
-// border:solid;
-// }
+}
