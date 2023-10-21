@@ -1,13 +1,10 @@
 .scrollable-content {
   flex: 1;
-  /* Allow the content to take the remaining space */
   overflow: auto;
-  /* Add a vertical scrollbar for overflow content */
   background-color: aliceblue;
   height: 200px;
 }
 
-/* Add some styles for the list items */
 ul {
   list-style-type: none;
   padding: 0;
@@ -42,6 +39,7 @@ thead {
 a {
   text-decoration: none;
 }
+
 body {
   background: rgb(163, 208, 219);
 
