@@ -30,10 +30,11 @@ router.post("/", (req, res) => {
   };
   userInfoQueries
     .updateInfo(newProfile)
-    .then(() => {
-      res.redirect('/')
-      // res.send(info);
-      // location.reload();
+
+    .then((info) => {
+      location.reload(true);
+      //res.redirect('/update');
+      res.send(info);
       //update form
     })
     .catch((e) => {

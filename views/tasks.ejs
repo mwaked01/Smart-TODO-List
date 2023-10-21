@@ -28,42 +28,41 @@
 </head>
 
 <body>
-  <%- include('./partials/_header') %>
-
-  <table>
-    <thead>
-      <tr>
-        <td>
+    <%- include('./partials/_header') %>
+      <table>
+        <thead>
+          <tr>
+            <td>
           <button>
             <a href="/tasks?category_id=3" class="nav-button">TO READ</a>
           </button>
         </td>
         <td>
-          <button>
+            <button>
             <a href="/tasks?category_id=1" class="nav-button">TO WATCH</a>
           </button>
         </td>
-        <td>
-          <button>
-            <a href="/tasks?category_id=2" class="nav-button">TO EAT</a>
-          </button>
-        </td>
-        <td>
-          <button>
-            <a href="/tasks?category_id=4" class="nav-button">TO BUY</a>
-          </button>
-        </td>
-        <td>
-          <button>
-            <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
-          </button>
-        </td>
-      </tr>
-    </thead>
+            <td>
+              <button>
+                <a href="/tasks?category_id=2" class="nav-button">TO EAT</a>
+              </button>
+            </td>
+            <td>
+              <button>
+                <a href="/tasks?category_id=4" class="nav-button">TO BUY</a>
+              </button>
+            </td>
+            <td>
+              <button>
+                <a href="/tasks?category_id=5" class="nav-button">OTHER</a>
+              </button>
+            </td>
+          </tr>
+        </thead>
 
-    <tbody>
-      <tr>
-        <td>
+        <tbody>
+          <tr>
+            <td>
           <div class="scrollable-content">
             <ul>
               <% for (const task of tasks) { %>
@@ -78,76 +77,73 @@
             </ul>
           </div>
         </td>
-        <td>
-          <div class="scrollable-content">
-            <ul>
-              <% for (const task of tasks) { %>
-                <h3>
-                  <% if (task.category_id===1 & task.user_id===1) { %>
-                    <li>
-                      <%= task.title %>
-                    </li>
+            <td>
+              <div class="scrollable-content">
+                <ul>
+                  <% for (const task of tasks) { %>
+                    <h3>
+                      <% if (task.category_id===1 & task.user_id===1) { %>
+                        <li>
+                          <%= task.title %>
+                        </li>
+                        <%}%>
+                    </h3>
                     <%}%>
-                </h3>
-                <%}%>
-            </ul>
-          </div>
-        </td>
+                </ul>
+              </div>
+            </td>
 
+            <td>
+              <div class="scrollable-content">
+                <ul>
+                  <% for (const task of tasks) { %>
+                    <h3>
+                      <% if (task.category_id===2 & task.user_id===1) { %>
+                        <li>
+                          <%= task.title %>
+                        </li>
+                        <%}%>
+                    </h3>
+                    <%}%>
+                </ul>
+              </div>
+            </td>
 
-          <td>
-            <div class="scrollable-content">
-              <ul>
-                <% for (const task of tasks) { %>
-                  <h3>
-                    <% if (task.category_id===2 & task.user_id===1) { %>
-                      <li>
-                        <%= task.title %>
-                      </li>
-                      <%}%>
-                  </h3>
-                  <%}%>
-              </ul>
-            </div>
-          </td>
+            <td>
+              <div class="scrollable-content">
+                <ul>
+                  <% for (const task of tasks) { %>
+                    <h3>
+                      <% if (task.category_id===4 & task.user_id===1) { %>
+                        <li>
+                          <%= task.title %>
+                        </li>
+                        <%}%>
+                    </h3>
+                    <%}%>
+                </ul>
+              </div>
+            </td>
 
+            <td>
+              <div class="scrollable-content">
+                <ul>
+                  <% for (const task of tasks) { %>
+                    <h3>
+                      <% if (task.category_id===5 & task.user_id===1) { %>
+                        <li>
+                          <%= task.title %>
+                        </li>
+                        <%}%>
+                    </h3>
+                    <%}%>
+                </ul>
+              </div>
+            </td>
 
-          <td>
-            <div class="scrollable-content">
-              <ul>
-                <% for (const task of tasks) { %>
-                  <h3>
-                    <% if (task.category_id===4 & task.user_id===1) { %>
-                      <li>
-                        <%= task.title %>
-                      </li>
-                      <%}%>
-                  </h3>
-                  <%}%>
-              </ul>
-            </div>
-          </td>
-
-
-          <td>
-            <div class="scrollable-content">
-              <ul>
-                <% for (const task of tasks) { %>
-                  <h3>
-                    <% if (task.category_id===5 & task.user_id===1) { %>
-                      <li>
-                        <%= task.title %>
-                      </li>
-                      <%}%>
-                  </h3>
-                  <%}%>
-              </ul>
-            </div>
-          </td>
-
-      </tr>
-    </tbody>
-  </table>
+          </tr>
+        </tbody>
+      </table>
 
 </body>
 

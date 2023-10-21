@@ -1,5 +1,5 @@
 header {
-  background-color: #54A396;
+  background-color: rgb(84, 163, 150);
   // background-color: #FFFFCE;
   height: 645px;
   color: #FFFFFF;
@@ -15,7 +15,7 @@ header {
 }
 
 #user-info {
-  display: flex;
+  display: flex; 
   flex-direction: column;
   gap: 15px;
   align-items: center;
@@ -69,4 +69,14 @@ select:focus {
   flex-direction: column;
   gap: 15px;
   align-items: center;
+}
+
+.fa-solid {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+img {
+  border: 5px solid rgb(0, 0, 0);
+  border-radius: 20px;
 }

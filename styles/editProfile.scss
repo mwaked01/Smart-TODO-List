@@ -1,58 +1,54 @@
-/* Style the profile image */
-.rounded-circle {
-    border: 5px solid #000000;
-    border-radius: 50%;
-    width: 90px;
-    height: 90px;
-    object-fit: cover;
-    display: block;
-    margin: 10px auto;
-  }
-  
-  /* Add some margin to the top of the image */
-  .mt-5 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  /* Force username and email to stack */
-  .font-weight-bold, .text-black-50 {
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .page-top {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-    font-size: x-large;
-  }
+ i.profile-icon {
+   display: flex;
+   justify-content: center;
+   padding-top: 20px;
+   padding-bottom: 10px;
+ }
 
-  .user-profile-sidebar {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-  }
+ .mt-5 {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 20px;
+ }
 
-  .profile-name {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
+ /* Force username and email to stack */
+ .font-weight-bold,
+ .text-black-50 {
+   display: flex;
+   justify-content: center;
+   font-weight: bold;
+   margin-bottom: 10px;
+ }
 
-  .profile-email {
-    display: flex;
-    justify-content: center;
-  }
+ .page-top {
+   display: flex;
+   justify-content: center;
+   margin-top: 30px;
+   font-size: x-large;
+ }
 
-  .profile-password {
-    display: flex;
-    justify-content: center;
-  }
+ .user-profile-sidebar {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+ }
 
-  .profile-info-container {
-    border: 2px solid #000000;
-  }
+ .profile-name {
+   display: flex;
+   justify-content: center;
+   margin-top: 20px;
+ }
+
+ .profile-email {
+   display: flex;
+   justify-content: center;
+ }
+
+ .profile-password {
+   display: flex;
+   justify-content: center;
+ }
+
+ .profile-info-container {
+   border: 2px solid #000000;
+ }
