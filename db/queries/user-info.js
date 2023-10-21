@@ -8,7 +8,7 @@ const getInfo = () => {
   ;
   `;
   return db
-  .query(queryInput)
+    .query(queryInput)
     .then(data => {
       return data.rows[0];
     });
@@ -20,7 +20,7 @@ const updateInfo = (info) => {
   WHERE id = $1;
   `;
   return db
-    .query(queryInput, [1,info.name, info.email, info.password])
+    .query(queryInput, [1, info.name, info.email, info.password])
     .then(data => {
       return data.rows[0];
     })
@@ -29,4 +29,4 @@ const updateInfo = (info) => {
     });
 };
 
-module.exports = { getInfo,updateInfo };
+module.exports = { getInfo, updateInfo };
