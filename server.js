@@ -43,6 +43,7 @@ const edamamApiRoutes = require('./routes/edamam-api');
 const openlibraryApiRoutes = require('./routes/openlibrary-api');
 const categoriesRoutes = require('./routes/categories');
 const updateProfileRoutes = require('./routes/update-profile');
+const editRoutes = require('./routes/edit');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -51,7 +52,6 @@ const updateProfileRoutes = require('./routes/update-profile');
 app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/users", usersRoutes);
-// app.use("/categories", categoriesRoutes(db));
 // Note: mount other resources here, using the same pattern above
 
 
@@ -63,6 +63,10 @@ app.use('/api/toBuy', edamamApiRoutes);
 app.use('/api/toWatch', themoviedpApiRoutes);
 app.use('/api/toEat', yelpApiRoutes);
 app.use('/api/toRead', openlibraryApiRoutes);
+
+app.use('/categories', categoriesRoutes);
+app.use('/categories/:task_id', categoriesRoutes);
+app.use('/edit', editRoutes);
 
 app.use('/uncategorized', openlibraryApiRoutes);
 // Home page

@@ -6,43 +6,28 @@
  */
 
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
+const db = require('../db/connection');
+const { deleteTaskById, getTasksByCategoryName } = require("../db/queries/get-tasks");
 
-module.exports = (db) => {
-  const listTask = (categoryId) => {//get from database
-    return db.query(`SELECT * FROM tasks WHERE category_id = $1 ORDER BY date_created;`, [
-      categoryId,
-    ]);
-  };
+router.get("/:cat_id", (req, res) => {
+  const catId = req.params.cat_id;
 
-  router.get("/", (req, res) => {
-    Promise.all([
-      listTask(1) //hard code for category = 1
-    ])
-      .then((data) => {
-        const tasks = data;//get data from database to pass it to render the page
-        const templateVars = {
-          tasks: tasks.rows,
-        };
-        res.render("categories", templateVars);
-      })
-      .catch((err) => res.status(500).send(err));
-  });
+  getTasksByCategoryName(catId)
+    .then((tasks) => {
+      const templateVars = { tasks, cat_id: catId };
+      res.render("categories", templateVars);
+    });
+});
 
-//  router.post('/edit', (req, res) =>
 
-  router.post('/delete', (req, res) => {
-    db.query(
-      `DELETE FROM tasks
-        WHERE id = $1;`,
-      [req.body.task_id]
-    )
-      .then((data) => {
-        res.json({ data });
-      })
-      .catch((err) => console.log(err.massage));
-  });
+router.post('/:task_id/delete', (req, res) => {
+   const taskId = req.params.task_id
+    deleteTaskById(taskId)
+    .then(() => {
+      res.redirect("back"); //go back
+    });
 
-  return router;
-};
-//module.exports = router;
+});
+
+module.exports = router;
