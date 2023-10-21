@@ -4,23 +4,13 @@ const db = require('../db/connection');
 const { getInfo }  = require('../db/queries/user-info');
 const { deleteTaskById, getTasksByCategoryName } = require("../db/queries/get-tasks");
 
-// router.get("/:cat_id", (req, res) => {
-//   const catId = req.params.cat_id;
-
-//   getTasksByCategoryName(catId)
-//     .then((tasks) => {
-//       const templateVars = { tasks, cat_id: catId };
-//       res.render("categories", templateVars);
-//     });
-// });
-
 router.get("/:cat_id", (req, res) => {
   const catId = req.params.cat_id;
 
-  const tasksPromise = getTasksByCategoryName(catId);
-  const infoPromise = getInfo();
+  const tasksByCategory = getTasksByCategoryName(catId);
+  const userInfo = getInfo();
 
-  Promise.all([tasksPromise, infoPromise])
+  Promise.all([tasksByCategory, userInfo])
     .then(([tasks, info]) => {
       const templateVars = { tasks, cat_id: catId, info };
       res.render("categories", templateVars);

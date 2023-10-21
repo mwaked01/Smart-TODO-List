@@ -12,53 +12,78 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
     integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
 
+  <!-- Awesome Font Library -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- App CSS -->
+
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
-  <link rel="stylesheet" href="../styles/editProfile.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/header.css" />
+  <link rel="stylesheet" href="/styles/edit.css" />
+  <!-- <link rel="stylesheet" href="../styles/editProfile.css" type="text/css" /> -->
 
+  <script defer src="/scripts/get-category.js"></script>
   <script src="/vendor/jquery-3.0.0.js"></script>
-
-  <script type="text/javascript" src="/scripts/edit.js"></script>
-  <script type="text/javascript" src="/scripts/categories.js"></script>
 
 </head>
 
 <body>
+  <%- include('./partials/_header') %>
 
-  <h1>Edit: <%= task.task %>
-  </h1>
-
-  <div>
-    Category: <%= task.category %>
-  </div>
-
-  <form action="/edit/<%= task.taskid %>" method="POST">
-    <label for="options">Select an option:</label>
-    <select id="options" name="options" >
-      <option value=<%=task.category %>> <%= task.category %>
-      </option>
-      <option value=  <%= categoriesLeft [0] %>><%= categoriesLeft [0] %></option>
-      <option value=  <%= categoriesLeft [1] %>><%= categoriesLeft [1] %></option>
-      <option value=  <%= categoriesLeft [2] %>><%= categoriesLeft [2] %></option>
-      <option value=  <%= categoriesLeft [3] %>><%= categoriesLeft [3] %></option>
-    </select>
-    <input type="text" name="myInput" value= "<%= task.task %>">
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
+    <div class="update-profile-container">
+      <h1 class="title">
+        Edit: <%= task.task %>
+      </h1>
+      <table>
+        <thead>
+          <tr id="column-name">
+            <th scope="col">Change Category</th>
+            <th scope="col">Change Task Name</th>
+          </tr>
+        </thead>
+        <form action="/edit/<%= task.taskid %>" method="POST">
+          <tbody>
+            <tr id="column-items">
+              <td id="dropdown">
+                <select id="options" name="options">
+                  <option value=<%=task.category %>> <%= task.category %>
+                  </option>
+                  <option value=<%=categoriesLeft [0] %>><%= categoriesLeft [0] %>
+                  </option>
+                  <option value=<%=categoriesLeft [1] %>><%= categoriesLeft [1] %>
+                  </option>
+                  <option value=<%=categoriesLeft [2] %>><%= categoriesLeft [2] %>
+                  </option>
+                  <option value=<%=categoriesLeft [3] %>><%= categoriesLeft [3] %>
+                  </option>
+                </select>
+              </td>
+              <td id="text-box">
+                <input type="text" name="myInput" value="<%=task.task %>">
+              </td>
+            </tr>
+          <tbody>
+      </table>
+      <div id="button">
+        <button style="width: 100vw" type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 <header>
-  <img src="/images/Smart_To_Do.png" width="200" height="100">
+  <img id="logo" src="/images/Smart_To_Do.png" width="200" height="100">
   <div class="category">
     <form id="categoryForm">
       <input type="text" id="word" name="word" required placeholder="New Task"></input>
@@ -9,10 +9,10 @@
     <p id="categoryResult" style="color: greenyellow;"></p>
   </div>
   <div id="user-info">
-    <i class="fa-solid fa-user fa-2xl" style="color: #000000;"></i>
+    <i class="fa-solid fa-user fa-2xl" style="color: #e82929;"></i>
     <%= info.name %>
       <form action="/logout" class="logout-btn" method="POST">
-        <button type="submit">LOGOUT</button>
+        <button type="submit" class="btn btn-primary btn-sm">LOGOUT</button>
       </form>
   </div>
 </header>
