@@ -1,6 +1,6 @@
 # Welcome to the **Smart To-Do List** Web Application
 ## Making and keeping your plans has never been easier!
-![logo]()
+![logo](docs/Image.png)
 
 Designed for the busy individual, this app will keep your important information readily available. Never forget an important purchase or struggle to remember the name of that restaurant you've been meaning to check out again! Smart To-Do List is here to help you simplify your daily tasks, clean up your weekly schedules, and help you to prepare for long-term plans while minimizing stress through efficient organization.
 
