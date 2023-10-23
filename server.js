@@ -5,6 +5,7 @@ require("dotenv").config();
 const sassMiddleware = require("./lib/sass-middleware");
 const express = require("express");
 const morgan = require("morgan");
+
 const { getTasks, getTasksByCategoryId } = require("./db/queries/tasks");
 
 const PORT = process.env.PORT || 8080;
@@ -33,9 +34,9 @@ app.use(express.static("public"));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 
-const userApiRoutes = require('./routes/users-api');
-const widgetApiRoutes = require('./routes/widgets-api');
-const usersRoutes = require('./routes/users');
+const userApiRoutes = require("./routes/users-api");
+const widgetApiRoutes = require("./routes/widgets-api");
+const usersRoutes = require("./routes/users");
 // API Routes;
 const themoviedpApiRoutes = require('./routes/themoviedb-api');
 const yelpApiRoutes = require('./routes/yelp-api');
@@ -48,12 +49,15 @@ const editRoutes = require('./routes/edit');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
-
 app.use("/api/users", userApiRoutes);
 app.use("/api/widgets", widgetApiRoutes);
 app.use("/users", usersRoutes);
 // Note: mount other resources here, using the same pattern above
+app.use("/categories", categoriesRoutes);
+app.use("/delete", categoriesRoutes);
+app.use("/edit", editRoutes);
 
+app.use("/update", updateProfileRoutes);
 
 app.use('/update', updateProfileRoutes);
 
@@ -68,7 +72,7 @@ app.use('/categories', categoriesRoutes);
 app.use('/categories/:task_id', categoriesRoutes);
 app.use('/edit', editRoutes);
 
-app.use('/uncategorized', openlibraryApiRoutes);
+app.use("/uncategorized", openlibraryApiRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
@@ -95,12 +99,10 @@ app.get("/tasks", (req, res) => {
   if (req.query.category_id) {
     query = getTasksByCategoryId(req.query.category_id);
   }
-
   query.then((tasks) => {
-    userInfoQueries.getInfo()
-    .then(info => {
+    userInfoQueries.getInfo().then(info => {
       res.render('tasks', { tasks,info });
-    })
+    });
   });
 });
 

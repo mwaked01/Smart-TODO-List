@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
       const data = JSON.parse(body);
       if (data.queryresult.success === true) {
         category = data.queryresult.datatypes;
-        if (category.includes('Food')){
+        if (category.includes('Food')) {
           category = 'To Eat';
         }
         res.json(category);
