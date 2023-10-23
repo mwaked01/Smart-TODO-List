@@ -22,7 +22,7 @@ const updateInfo = (info) => {
   return db
     .query(queryInput, [1, info.name, info.email, info.password])
     .then(data => {
-      return data.rows;
+      return data.rows [0];
     })
     .catch((err) => {
       console.log(err.message);
